@@ -36,34 +36,29 @@ add_VIs <- function(tropomi_file){
   nc_close(myfile)
   myfile <- nc_open(tropomi_file, write = TRUE)
   
-  # elem_dim <- myfile$dim[['n_elem']]
-  # 
-  # # Define variables that will be added to nc file
-  # ndvi_var     <- ncvar_def("PRODUCT/NDVI", units ="-", dim = elem_dim, longname = "Normalized Difference Vegetation Index",
-  #                   pre = "float", compression = 4, missval = -9999)
-  # nirv_var     <- ncvar_def("PRODUCT/NIRv", units ="-", dim = elem_dim, longname = "NIR Reflectance of Vegetation",
-  #                   pre = "float", compression = 4, missval = -9999)
-  # nirv_rad_var <- ncvar_def("PRODUCT/NIRv_RAD", units ="mW/m2/sr/nm", dim = elem_dim, longname = "NIRv Radiance",
-  #                   pre = "float", compression = 4, missval = -9999)
-  # 
-  # # Add the variables to the file
-  # ncvar_add(myfile, ndvi_var)
-  # ncvar_add(myfile, nirv_var)
-  # ncvar_add(myfile, nirv_rad_var)
-  # 
-  # # Close then open for writing
-  # nc_close(myfile)
-  # myfile <- nc_open(tropomi_file, write = TRUE)
-  # 
-  # # Write data
-  # ncvar_put(myfile, ndvi_var, ndvi)
-  # ncvar_put(myfile, nirv_var, nirv)
-  # ncvar_put(myfile, nirv_rad_var, nirv_rad)
-  
+  elem_dim <- myfile$dim[['n_elem']]
+
+  # Define variables that will be added to nc file
+  ndvi_var     <- ncvar_def("PRODUCT/NDVI", units ="-", dim = elem_dim, longname = "Normalized Difference Vegetation Index",
+                    pre = "float", compression = 4, missval = -9999)
+  nirv_var     <- ncvar_def("PRODUCT/NIRv", units ="-", dim = elem_dim, longname = "NIR Reflectance of Vegetation",
+                    pre = "float", compression = 4, missval = -9999)
+  nirv_rad_var <- ncvar_def("PRODUCT/NIRv_RAD", units ="mW/m2/sr/nm", dim = elem_dim, longname = "NIRv Radiance",
+                    pre = "float", compression = 4, missval = -9999)
+
+  # Add the variables to the file
+  ncvar_add(myfile, ndvi_var)
+  ncvar_add(myfile, nirv_var)
+  ncvar_add(myfile, nirv_rad_var)
+
+  # Close then open for writing
+  nc_close(myfile)
+  myfile <- nc_open(tropomi_file, write = TRUE)
+
   # Write data
-  ncvar_put(myfile, "PRODUCT/NDVI", ndvi)
-  ncvar_put(myfile, "PRODUCT/NIRv", nirv)
-  ncvar_put(myfile, "PRODUCT/NIRv_RAD", nirv_rad)
+  ncvar_put(myfile, ndvi_var, ndvi)
+  ncvar_put(myfile, nirv_var, nirv)
+  ncvar_put(myfile, nirv_rad_var, nirv_rad)
   
   # Close
   nc_close(myfile)
