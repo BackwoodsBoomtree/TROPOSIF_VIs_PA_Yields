@@ -146,4 +146,4 @@ add_vis_pa_yields <- function(tropomi_file){
   
 }
 
-mclapply(file_list, add_vis_pa_yields, mc.cores = 1, mc.preschedule = FALSE)
+mclapply(file_list, add_vis_pa_yields, mc.cores = 10, mc.preschedule = FALSE)
