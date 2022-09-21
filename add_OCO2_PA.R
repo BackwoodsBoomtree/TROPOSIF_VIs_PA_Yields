@@ -67,4 +67,8 @@ add_pa <- function(oco_file){
   
 }
 
+# for (i in 1:length(file_list)) {
+#   add_pa(file_list[i])
+# }
+
 mclapply(file_list, add_pa, mc.cores = 10, mc.preschedule = FALSE)
