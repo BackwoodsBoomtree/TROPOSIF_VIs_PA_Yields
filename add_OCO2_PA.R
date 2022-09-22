@@ -1,7 +1,7 @@
 library(ncdf4)
 library(parallel)
 
-file_dir <- "/mnt/g/OCO2/B11/test"
+file_dir <- "/mnt/g/OCO2/B11/original"
 
 file_list <- list.files(file_dir, recursive = TRUE, full.names = TRUE, pattern = "*.nc")
 
@@ -67,6 +67,7 @@ add_pa <- function(oco_file){
   
 }
 
+### For debugging
 # for (i in 1:length(file_list)) {
 #   add_pa(file_list[i])
 # }
