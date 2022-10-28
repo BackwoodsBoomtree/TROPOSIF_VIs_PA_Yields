@@ -1,7 +1,7 @@
 library(ncdf4)
 library(parallel)
 
-file_dir <- "/mnt/g/OCO3/B10"
+file_dir <- "/mnt/g/OCO3/B10/original/new"
 
 file_list <- list.files(file_dir, recursive = TRUE, full.names = TRUE, pattern = "*.nc")
 
