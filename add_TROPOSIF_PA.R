@@ -23,13 +23,9 @@ add_vis_pa_yields <- function(tropomi_file){
   myfile <- nc_open(tropomi_file)
   
   # Get variables for calculation
-  ref_665 <- ncvar_get(myfile, varid = "PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/TOA_RFL")[1,]
-  ref_781 <- ncvar_get(myfile, varid = "PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/TOA_RFL")[7,]
-  rad     <- ncvar_get(myfile, varid = "PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/Mean_TOA_RAD_743")
   vza     <- ncvar_get(myfile, varid = "PRODUCT/SUPPORT_DATA/GEOLOCATIONS/viewing_zenith_angle")
   sza     <- ncvar_get(myfile, varid = "PRODUCT/SUPPORT_DATA/GEOLOCATIONS/solar_zenith_angle")
   raa     <- ncvar_get(myfile, varid = "PRODUCT/SUPPORT_DATA/GEOLOCATIONS/relative_azimuth_angle")
-  sif     <- ncvar_get(myfile, varid = "PRODUCT/SIF_743")
   
   # Close file
   nc_close(myfile)
